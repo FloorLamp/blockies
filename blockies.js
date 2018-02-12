@@ -65,7 +65,7 @@
 	function buildOpts(opts) {
 		var newOpts = {};
 
-		newOpts.seed = opts.seed || Math.floor((Math.random()*Math.pow(10,16))).toString(16);
+		newOpts.seed = opts.seed || '';
 
 		seedrand(newOpts.seed);
 
@@ -79,6 +79,7 @@
 	}
 
 	function renderIcon(opts, canvas) {
+		var opts = buildOpts(opts || {});
 		var imageData = createImageData(opts.size);
 		var width = Math.sqrt(imageData.length);
 
@@ -106,7 +107,6 @@
 	}
 
 	function createIcon(opts) {
-		var opts = buildOpts(opts || {});
 		var canvas = document.createElement('canvas');
 
 		renderIcon(opts, canvas);
